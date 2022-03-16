@@ -1,10 +1,10 @@
-const img = document.createElement('img');
-document.body.append(img);
-// img.src = './img/drake.jpeg'; Detta funkar inte!
+// const img = document.createElement('img');
+// document.body.append(img);
+// // img.src = './img/drake.jpeg'; Detta funkar inte!
 
-const imgUrl = new URL('./img/drake.jpeg', import.meta.url );
-img.src = imgUrl.toString(); // href works too
-console.log(imgUrl);
+// const imgUrl = new URL('./img/drake.jpeg', import.meta.url );
+// img.src = imgUrl.toString(); // href works too
+// console.log(imgUrl);
 
 // Clara kollar upp detta, funkade ej att lägga upp fler bilder
 
@@ -19,3 +19,16 @@ console.log(imgUrl);
 //     img.src = imgUrl.href;
 // }
 
+// DETTA FUNKAR OM MAN VILL LÄGGA TILL FLER BILDER
+
+const imgUrls = [
+    new URL('./img/drake.jpeg', import.meta.url ),
+    new URL('./img/newyork.jpeg', import.meta.url ),
+    new URL('./img/pad_thai.jpeg', import.meta.url )
+]
+
+for (const el of imgUrls) {
+    const img = document.createElement('img');
+    document.body.append(img);
+    img.src = el.href;
+}
